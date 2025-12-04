@@ -106,8 +106,8 @@
 \def\ThesisAuthor#1#2{\author{#1 #2}}
 \def\ThesisTitle#1#2{\title{#1}\gdef\@titleOther{#2}}
 % added by A.Quadt, 31.08.2010
-\def\ReferenceNumber#1{\gdef\@ReferenceNumber{#1}}
-\def\@ReferenceNumber{\@latex@error{No \noexpand\ReferenceNumber given}\@ehc}
+\def\CourseName#1{\gdef\@CourseName{#1}}
+\def\@CourseName{\@latex@error{No \noexpand\CourseName given}\@ehc}
 %
 \def\@titleOther{\@latex@error{No \noexpand\titleOther given}\@ehc}
 \newcounter{@countbegin}
@@ -161,33 +161,33 @@
 \def\PlaceOfBirth#1{\gdef\@WhereFrom{#1}}
 \def\@WhereFrom{\@latex@error{No \noexpand\WhereFrom given}\@ehc}
 \newcommand{\LLogo}{\parbox[b][2.2cm]{0.3\textwidth}{%
-    \texttt{figures/Logo_Uni_Goettingen.*}
+    \texttt{template_figures/Logo_Uni_Goettingen.*}
     von \texttt{http://www.physik.uni-goettingen.de/...} laden}}
 \newcommand{\RLogo}{\parbox[b][2.2cm]{0.3\textwidth}{%
-    \texttt{figures/Logo_Physik.*}
+    \texttt{template_figures/Logo_Physik.*}
     von \texttt{http://www.physik.uni-goettingen.de/...} downloaden}}
 \newcommand{\l@g@error}{%
   \ClassError{GAUBM}{Logo file not found}
   {One or more of the files\MessageBreak
-    \space\space\space\space figures/Logo_Uni_Goettingen.eps \MessageBreak
-    \space\space\space\space figures/Logo_Uni_Goettingen.pdf \MessageBreak
-    \space\space\space\space figures/Logo_Physik_links.eps \MessageBreak
-    \space\space\space\space figures/Logo_Physik_links.pdf \MessageBreak
+    \space\space\space\space template_figures/Logo_Uni_Goettingen.eps \MessageBreak
+    \space\space\space\space template_figures/Logo_Uni_Goettingen.pdf \MessageBreak
+    \space\space\space\space template_figures/Logo_Physik_links.eps \MessageBreak
+    \space\space\space\space template_figures/Logo_Physik_links.pdf \MessageBreak
     are not installed properly. \MessageBreak
     Install this subdirectory with the logo files \MessageBreak
     together with the class file, see README.\MessageBreak
     Type <return> to proceed without the logos.}
 }
-\IfFileExists{figures/Logo_Uni_Goettingen.eps}%
-{\IfFileExists{figures/Logo_Uni_Goettingen.pdf}%
+\IfFileExists{template_figures/Logo_Uni_Goettingen.eps}%
+{\IfFileExists{template_figures/Logo_Uni_Goettingen.pdf}%
   {\renewcommand{\LLogo}%
-    {\includegraphics[height=1.5cm]{figures/Logo_Uni_Goettingen}}}%
+    {\includegraphics[height=1.5cm]{template_figures/Logo_Uni_Goettingen}}}%
   {\l@g@error}%
 }{\l@g@error}
-\IfFileExists{figures/Logo_Physik_links.eps}%
-{\IfFileExists{figures/Logo_Physik_links.pdf}%
+\IfFileExists{template_figures/Logo_Physik_links.eps}%
+{\IfFileExists{template_figures/Logo_Physik_links.pdf}%
   {\renewcommand{\RLogo}%
-    {\includegraphics[height=1.5cm]{figures/Logo_Physik_links}}}%
+    {\includegraphics[height=1.5cm]{template_figures/Logo_Physik_links}}}%
   {\l@g@error}%
 }{\l@g@error}
 \titlehead{\LLogo\hfill\RLogo}
@@ -234,16 +234,17 @@
       prepared by\\[3mm]
       \textbf{\large \@author}\\[3mm]
       from \@WhereFrom\\[5mm]
-      at the \@Institute
+      at the \@Institute\\ [5mm]
+      \includegraphics[width = 0.2\textwidth]{template_figures/DESY_logo.pdf}%
     \end{center}
     \vfill\null
     \noindent
     \begin{tabular}[t]{p{0.24\linewidth}p{0.76\textwidth-4\tabcolsep}}
 % added by A.Quadt, 31.08.2010
-      \bfseries Thesis number:&        
+      \bfseries Course:&        
       \begin{minipage}[t]{0.76\textwidth-4\tabcolsep}%
-        \@ReferenceNumber\end{minipage}\\&\\
-      \bfseries Thesis period:&
+        \@CourseName\end{minipage}\\&\\
+      \bfseries Course period:&
       \begin{minipage}[t]{0.76\textwidth-4\tabcolsep}%
         \dateselectlanguage{english}\setdatebynumber{\the@countbegin}\datedate\ 
         until \setdatebynumber{\the@countend}\datedate\end{minipage}\\&\\

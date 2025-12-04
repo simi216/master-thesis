@@ -1,0 +1,153 @@
+\NeedsTeXFormat{LaTeX2e}[2005/12/01]
+%%    2009/03/12 v1.0 GAUBM Vorlage fuer Abschlussarbeiten Physik
+%% Template fuer Bachelor- und Masterarbeiten
+%% an der Fakultaet fuer Physik (c) Thomas Pruschke der GA Universitaet
+%% Verbesserungsvorschlaege bitte an pruschke@theorie.physik.uni-goettingen.de
+%%
+%% Benoetigte Pakete: datenumber
+%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% Bitte vor dem Veraendern diese Datei umbenennen! %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% scrbook - Ersatz fuerr LaTeX book Klasse aus dem KOMA Script
+%% Moegliche Optionen: diejenigen der Klasse scrbook ausser titlepage
+%% Updates, Fixes und Modifikationen von Boris Lemmer, 07.01.2015
+
+%% deutsche Arbeit:
+\documentclass[master,       %% Typ der Arbeit: bachelor oder master
+               twoside,        %% zweiseitiges Layout
+               BCOR10mm,       %% Bindekorrektur 10 mm
+%               liststotoc,nomtotoc,bibtotoc, %% Aufnahme der div. Verzeichnisse
+                                              %% ins Inhaltsverzeichnis
+%               english,ngerman, %% Alternativspr. Englisch, Dokumentspr. Deutsch
+               ngerman,english  %% Alternativspr. Deutsch, Dokumentspr. Englisch
+%               final,          %% Endversion; draft fuer schnelles Kompilieren
+               ]{GAUBM}
+
+\usepackage{setspace}  %% Zur Setzung des Zeilenabstandes
+\usepackage{babel}     %% Sprachen-Unterstuetzung
+\usepackage{calc}      %% ermoeglicht Rechnen mit Laengen und Zaehlern
+\usepackage[T1]{fontenc}       %% Unterstutzung von Umlauten etc.
+\usepackage[latin1]{inputenc}  %% 
+%% in aktuellem Linux & MacOS X wird standardmaessig UTF8 kodiert!
+%\usepackage[utf8]{inputenc}    %% Wenn latin1 nicht geht ...
+
+\usepackage{amsmath,amssymb} %% zusaetzliche Mathe-Symbole
+
+\usepackage{lmodern} %% type1-taugliche CM-Schrift als Variante zur
+                     %% "normalen" EC-Schrift
+%% Paket fuer bibtex-Datenbanken
+\usepackage[comma,numbers,sort&compress]{natbib}
+%% modified by A.Quadt, 01.09.2010
+% \bibliographystyle{plainnat}
+\bibliographystyle{bthesis}
+% added by A.Quadt, 01.09.2010
+\input{style}
+
+\newcommand{\tabheadfont}[1]{\textbf{#1}} %% Tabellenkopf in Fett
+\usepackage{booktabs}                      %% Befehle fuer besseres Tabellenlayout
+\usepackage{longtable}                     %% umbrechbare Tabellen
+\usepackage{array}                         %% zusaetzliche Spaltenoptionen
+
+%% umfangreiche Pakete fuer Symbole wie \micro, \ohm, \degree, \celsius etc.
+\usepackage{textcomp,gensymb}
+
+%\usepackage{SIunits} %% Korrektes Setzen von Einheiten
+%\usepackage{units}   %% Variante fuer Einheiten
+
+%% Hyperlinks im Dokument; muss als eines der letzten Pakete geladen werden
+\usepackage[pdfstartview=FitH,      % Oeffnen mit fit width
+            breaklinks=true,        % Umbrueche in Links, nur bei pdflatex default
+            bookmarksopen=true,     % aufgeklappte Bookmarks
+            bookmarksnumbered=true  % Kapitelnummerierung in bookmarks
+            ]{hyperref}
+
+%% Weiter benoetigte Pakete: datenumber
+%% Falls dieses Paket nicht in der Installation vorhanden ist,
+%% kann es von der Seite mit diesem Template heruntergeladen werden
+%% und in einem LaTeX bekanntem Verzeichnis installiert werden (notfalls
+%% dem Verzeichnis mit der Arbeit).
+\begin{document}
+%%
+%%                   Ab hier muessen die Anpassungen geschehen
+%%
+%% Hier den eigenen Namen einsetzen
+\ThesisAuthor{Siemen}{Aulich}
+%% Hier den Geburtsort einsetzen
+\PlaceOfBirth{Emden}
+%% Titel Arbeit. Das erste Argument ist der deutsche, das zweite der
+%% englische Titel.
+\ThesisTitle{}{Improving Event Reconstruction for Dileptonic Decays of Top Quarks Pairs Using Machine Learning}
+%% Erst- und Zweitgutacher/in
+%% Ist der/die Betreuer/in nicht identisch mit dem/r Erstgutachter/in,
+%% muss diese/r als optionales Argument angegeben werden.
+%% Diese Angaben beziehen sich auf Institut-externe BetreuerInnen und sollten nur in Ausnahmen relevant sein.
+%%\FirstReferee[Dr.\ \ldots]{Prof.\ Dr.\ \dots} % fuer externe Betreung
+\FirstReferee{Prof.~Dr.~Stan Lai}                % fuer interne Betreung
+%% Optionen mit Stand 01. Januar 2014:
+%% Prof.~Dr.~Ariane Frey
+%% Priv.Doz.~Dr.~J{\"o}rn Gro{\ss}e-Knetter
+%% Prof.~Dr.~Hans Hofs{\"a}ss
+%% Prof.~Dr.~Arnulf Quadt
+%% Jun.Prof.~ Steffen Schumann
+\Institute{DESY Hamburg}
+\SecondReferee{Dr.~Katharina Behr}
+%% added by A.Quadt, 31.08.2010
+%% Referenz Nummer der Bachelorarbeit im Institut
+\CourseName{M.Phy.1610: Development and Realization of Scientific
+Projects in Theoretical Physics}
+%%
+%% Beginn und Ende des Anfertigungszeitraumes
+\ThesisBegin{6}{4}{2025}
+\ThesisEnd{4}{12}{2026}
+%% DO NOT TOUCH THESE LINES!!!!
+\frontmatter
+\maketitle
+\cleardoublepage
+\begin{abstract}
+  Here the key results of the thesis can be presented in about
+  half a page.
+  \bigskip\par
+  \textbf{Keywords:} Physics, Bachelor thesis
+\end{abstract}
+
+%% Ende des Vorspanns
+\cleardoublepage
+\mainmatter   %% Anfang Hauptteil
+
+\chapter{Introduction}
+\include{chapters/01-introduction}
+
+\chapter{Theoretical Background}
+\include{chapters/02-background}
+
+\chapter{Methodology}
+\include{chapters/03-methods}
+
+\chapter{Results}
+\include{chapters/04-results}
+
+\chapter{Conclusion}
+\include{chapters/05-conclusion}
+
+\appendix
+\chapter{Additional Plots}
+
+
+
+\cleardoublepage
+%% Bibliographie. Das Argument muss der Name der BIBTeX-Datenbank stehen.
+%% Ein Beispiel fuer eine solche Datenbank finden Sie in bthesis_datenbank.bib
+\bibliography{bthesis_datenbank} 
+
+\chapter*{Danksagung}
+Dank\dots
+
+%% Dieser Befehl MUSS am Ende stehen und erzeugt die Erklaerung ueber die
+%% benutzten Mittel
+\begin{otherlanguage}{ngerman}
+\Declaration
+\end{otherlanguage}
+\end{document}
