@@ -1,9 +1,5 @@
-%\documentclass[11pt, a4paper, headsepline, footsepline]{scrbook}
-
-%\usepackage[latin1]{inputenc}
 \usepackage{longtable}
-\usepackage[it, bf]{caption}
-%\usepackage[dvips]{graphicx}
+%\usepackage[it, bf]{caption}
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{mathrsfs}
@@ -12,27 +8,37 @@
 \usepackage{booktabs}
 \usepackage{hhline}
 \usepackage{array}
-\usepackage{subfigure}
 \usepackage{floatflt}
-\usepackage{graphicx}% Include figure files
-\usepackage{dcolumn}% Align table columns on decimal point
-\usepackage{bm}% bold math
+\usepackage{graphicx}
+\usepackage{dcolumn}
+\usepackage{bm}
 \usepackage{mathrsfs} 
 \usepackage{amssymb}
-\usepackage{siunitx}  %% added by K.Zoch, 15/12/2020
+\usepackage{siunitx}
 
-% added by A.Quadt, 07.09.2010
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{mathrsfs}
 \usepackage{xspace}
 %
 
+\sisetup{
+  inter-unit-product 	=	$\cdot$,
+  fraction-function   	= 	\nicefrac,
+  load-configurations 	= 	abbreviations,
+  per-mode            	= 	fraction,
+  separate-uncertainty	=	true,
+  output-decimal-marker	=	{.}
+  }   
+\usepackage{float}
+
+
 \setlength{\oddsidemargin}{0cm}
 \setlength{\evensidemargin}{0cm}
 \setlength{\topmargin}{-1cm}
 \setlength{\textheight}{23cm}
 \setlength{\textwidth}{16cm}
+\setlength{\parindent}{0cm}
 
 \pagestyle{headings}
 
@@ -40,8 +46,7 @@
 \renewcommand{\floatpagefraction}{0.7}
 \renewcommand{\textfraction}{0.1}
 
-% abbreviations added, A.Quadt, 07.09.2010
-% Particle Names and Decays
+% Experiments
 \newcommand{\dzero}      {D\O\xspace}
 \newcommand{\cdf}        {CDF\xspace}
 \newcommand{\uubar}      {\mbox{$u\bar{u}$}}
@@ -56,8 +61,8 @@
 \newcommand{\ljets}      {\mbox{$\ell$+jets}}
 \newcommand{\ejets}      {\mbox{$e$+jets}}
 \newcommand{\mujets}     {\mbox{$\mu$+jets}}
-%
-% Experiment and Detector Names
+
+% Laboratories
 \newcommand{\fermilab}  {{F{\textsc{ermilab}}}\xspace}
 \newcommand{\tevatron}  {{T{\textsc{evatron}}}\xspace}
 \newcommand{\opal}      {{O{\textsc{pal}}}\xspace}
@@ -126,3 +131,4 @@
 \newcommand{\runii}     {Run~II\xspace}
 \newcommand{\LHCruni}   {Run~1\xspace}  %% For LHC! (Arabic numerals)
 \newcommand{\LHCrunii}  {Run~2\xspace}
+\newcommand{\LHCruniii}  {Run~3\xspace}

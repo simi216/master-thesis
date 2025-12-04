@@ -398,45 +398,21 @@ INTEGERS { nameptr namesleft numnames }
 FUNCTION {format.names}
 { 'bibinfo :=
   duplicate$ empty$ 'skip$ {
-  's :=
-  "" 't :=
-  #1 'nameptr :=
-  s num.names$ 'numnames :=
-  numnames 'namesleft :=
-    { namesleft #0 > }
-    { s nameptr
-      "{f.~}{vv~}{ll}{, jj}"
-      format.name$
-      bibinfo bibinfo.check
-      't :=
-      nameptr #1 >
-        {
-          namesleft #1 >
-            { ", " * t * }
-            {
-              "," *
-              s nameptr "{ll}" format.name$ duplicate$ "others" =
-                { 't := }
-                { pop$ }
-              if$
-              t "others" =
-                {
-                  " " * bbl.etal *
-                }
-                { " " * t * }
-              if$
-            }
-          if$
-        }
-        't
-      if$
-      nameptr #1 + 'nameptr :=
-      namesleft #1 - 'namesleft :=
-    }
-  while$
+    's :=
+    s num.names$ 'numnames :=
+    numnames #0 >
+      { 
+        % Print first author
+        s #1 "{f.~}{vv~}{ll}" format.name$ 
+        numnames #1 >  % If more than 1 author, add et~al.
+          { " et~al." * }
+          { "" * }
+        if$
+      }
+      { "" } % empty if no authors
+    if$
   } if$
-}
-FUNCTION {format.names.ed}
+}FUNCTION {format.names.ed}
 {
   format.names
 }
