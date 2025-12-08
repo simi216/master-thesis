@@ -11,4 +11,15 @@ Finally, detector simulation programs like \textsc{Geant4} \cite{geant4} are use
 While the actual detector response is simulated using complex detector simulation software, for many machine learning applications, a simplified representation of the detector response is sufficient. This can involve smearing the particle momenta and energies according to the detector resolution, applying efficiency corrections, and simulating the effects of pile-up.\\
 This is because, for the reconstruction of the physics objects, such as jets, leptons, and missing transverse energy, highly sophisticated algorithms are used that already take into account the detector effects (Note, that these algortihms may also be machine learning based,). Therefore, the input features for machine learning models can often be derived directly from these reconstructed objects, rather than relying on the raw detector signals. The reconstructed object event variables are called \textit{reco-level}.
 \subsection{Training}
-During the training phase, the model is presented with a set of input features derived from the reco-level event variables, along with their corresponding target outputs, which are typically derived from the parton-level event variables. The model learns to map the input features to the target outputs by minimizing a loss function that quantifies the difference between the predicted and true values. Common loss functions include mean squared error for regression tasks and cross-entropy \cite{cross-entropy} loss for classification tasks.\\
+During the training phase, the model is presented with a set of input features derived from the reco-level event variables, along with their corresponding target outputs, which are typically derived from the parton-level event variables. The model learns to map the input features to the target outputs by minimizing a loss function that quantifies the difference between the predicted and true values. Common loss functions include mean squared error for regression tasks and cross-entropy loss \cite{cross-entropy} for classification tasks.
+The training process involves iteratively updating the model's parameters using an optimization algorithm to minimize the loss function.
+
+
+\subsection{Validation and Testing}
+To evaluate the performance of the trained model, it is essential to validate and test it on independent datasets that were not used during training. This helps to assess the model's generalization capabilities and ensures that it can make accurate predictions on unseen data. Common evaluation metrics include accuracy, precision, recall, F1-score for classification tasks, and mean absolute error or R-squared for regression tasks.
+
+
+
+
+\section{Neural Networks}
+Inspired by the structure and function of the human brain, neural networks are composed of interconnected nodes. 
