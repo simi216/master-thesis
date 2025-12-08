@@ -233,7 +233,7 @@
     \begin{center}
       prepared by\\[3mm]
       \textbf{\large \@author}\\[3mm]
-      from \@WhereFrom\\[5mm]
+      from \@WhereFrom\\[3mm]
       at the \@Institute\\ [5mm]
       \includegraphics[width = 0.2\textwidth]{template_figures/DESY_logo.pdf}%
     \end{center}

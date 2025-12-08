@@ -906,8 +906,8 @@ FUNCTION {article}
     }
   if$
   format.note output
-  format.eprint output
-  format.url output
+  %format.eprint output
+  %format.url output
   fin.entry
 }
 FUNCTION {book}
