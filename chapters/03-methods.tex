@@ -1,25 +1,85 @@
-\chapter{Machine Learning in High Energy Physics}
-Since this work focuses on improving the event reconstruction of dileptonic \ttbar decays using machine learning techniques, this chapter provides an overview of the fundamental concepts and methodologies employed in machine learning. 
+\chapter{Machine Learning in Particle Physics}
+Since this work focuses on improving the event reconstruction of dileptonic \ttbar decays using machine learning techniques, this chapter provides an overview of the fundamental concepts and methodologies employed in machine learning.\\
+In the context of this thesis, machine learning refers to a subset of artificial intelligence that involves the development of algorithms and statistical models that enable computers to perform specific tasks without explicit instructions. Instead, these algorithms learn patterns and relationships from data to make predictions or decisions.\\
+From a computational perspective, machine learning can be viewed as the optimization of a function $f:\mathbb{R}^n \rightarrow \mathbb{R}^m$ that maps input data points $\mathbf{x} \in \mathbb{R}^n$ to output predictions $\mathbf{y} \in \mathbb{R}^m$. The function $f$ is parameterized by a set of learnable parameters $\theta$, which are adjusted during the training process to minimize a predefined \textit{loss function} $L(\mathbf{y}, f(\mathbf{x}; \theta))$. The loss function quantifies the discrepancy between the predicted outputs and the true target values, guiding the optimization process.
+
 
 \section{Supervised Learning}
 Machine learning can be broadly categorized into supervised and unsupervised learning. In supervised learning, the model is trained on a labeled dataset, where each input data point is associated with a corresponding target output. The goal of the model is to learn a mapping from inputs to outputs, enabling it to make accurate predictions on unseen data.
+
+
 \subsection{Monte Carlo Training Data}
-In high energy physics, supervised learning is commonly performed by training mdoels on simulated datasets. The way the Monte Carlo Event modelling is performed in particle physics, makes it naturally suited for supervised learning tasks.\\
-Events are usually simulated using a cascade of different programs, each simulating a different state of the event. First the hard scattering process is simulated using matrix element generators like \textsc{MadGraph} \cite{madevent_1} or \textsc{Powheg} \cite{powheg}. These programs calculate the probabilities of different particle interactions based on the underlying physics theories, such as the Standard Model. Using these probabilities, they generate events that represent the initial state of the particles after the collision. The possible kinematic phase space is sampled according to these probabilities, resulting in a set of particles with specific momenta and energies. This type of event variables is often referred to as \textit{parton-level}.\\
-Next, the parton showering and hadronization processes are simulated using programs like \textsc{Pythia} \cite{pythia}. Parton showering models the emission of additional particles from the initial partons, while hadronization simulates the formation of hadrons from quarks and gluons. These processes are crucial for accurately modelling the final state particles observed in detectors.\\
-Finally, detector simulation programs like \textsc{Geant4} \cite{geant4} are used to simulate the interaction of particles with the detector material, producing realistic detector responses. This includes simulating the energy deposits in calorimeters, hits in tracking detectors, and other relevant signals.\\
-While the actual detector response is simulated using complex detector simulation software, for many machine learning applications, a simplified representation of the detector response is sufficient. This can involve smearing the particle momenta and energies according to the detector resolution, applying efficiency corrections, and simulating the effects of pile-up.\\
+In high energy physics, supervised learning is commonly performed by training mdoels on simulated datasets. The way the Monte Carlo Event modelling is performed in particle physics, makes it naturally suited for supervised learning tasks.
+
+Events are usually simulated using a cascade of different programs, each simulating a different state of the event. First the hard scattering process is simulated using matrix element generators like \textsc{MadGraph} \cite{madevent_1} or \textsc{Powheg} \cite{powheg}. These programs calculate the probabilities of different particle interactions based on the underlying physics theories, such as the Standard Model. Using these probabilities, they generate events that represent the initial state of the particles after the collision. The possible kinematic phase space is sampled according to these probabilities, resulting in a set of particles with specific momenta and energies. This type of event variables is often referred to as \textit{parton-level}.
+
+Next, the parton showering and hadronization processes are simulated using programs like \textsc{Pythia} \cite{pythia}. Parton showering models the emission of additional particles from the initial partons, while hadronization simulates the formation of hadrons from quarks and gluons. These processes are crucial for accurately modelling the final state particles observed in detectors.
+
+Finally, detector simulation programs like \textsc{Geant4} \cite{geant4} are used to simulate the interaction of particles with the detector material, producing realistic detector responses. This includes simulating the energy deposits in calorimeters, hits in tracking detectors, and other relevant signals.
+
+While the actual detector response is simulated using complex detector simulation software, for many machine learning applications, a simplified representation of the detector response is sufficient. This can involve smearing the particle momenta and energies according to the detector resolution, applying efficiency corrections, and simulating the effects of pile-up.
+
 This is because, for the reconstruction of the physics objects, such as jets, leptons, and missing transverse energy, highly sophisticated algorithms are used that already take into account the detector effects (Note, that these algortihms may also be machine learning based,). Therefore, the input features for machine learning models can often be derived directly from these reconstructed objects, rather than relying on the raw detector signals. The reconstructed object event variables are called \textit{reco-level}.
+
 \subsection{Training}
 During the training phase, the model is presented with a set of input features derived from the reco-level event variables, along with their corresponding target outputs, which are typically derived from the parton-level event variables. The model learns to map the input features to the target outputs by minimizing a loss function that quantifies the difference between the predicted and true values. Common loss functions include mean squared error for regression tasks and cross-entropy loss \cite{cross-entropy} for classification tasks.
-The training process involves iteratively updating the model's parameters using an optimization algorithm to minimize the loss function.
+The training process involves iteratively updating (called \textit{epoch}) the model's parameters using an optimization algorithm to minimize the loss function.
 
 
 \subsection{Validation and Testing}
-To evaluate the performance of the trained model, it is essential to validate and test it on independent datasets that were not used during training. This helps to assess the model's generalization capabilities and ensures that it can make accurate predictions on unseen data. Common evaluation metrics include accuracy, precision, recall, F1-score for classification tasks, and mean absolute error or R-squared for regression tasks.
+To evaluate the performance of the trained model, it is essential to validate and test it on independent datasets that were not used during training. This helps to assess the model's generalization capabilities and ensures that it can make accurate predictions on unseen data. A common practice is to split the available data into training, validation, and test sets. The validation set is used to tune hyperparameters and monitor the model's performance during training, while the test set is reserved for the final evaluation of the model's performance.
 
-
+Since in particle physics, simulated data is often used for training and background modelling, one typically employs a k-folding strategy, where the data is divided into k subsets. The model is trained k times, each time using a different subset as the validation set and the remaining subsets for training. This approach helps to use the available data more efficiently.
 
 
 \section{Neural Networks}
-Inspired by the structure and function of the human brain, neural networks are composed of interconnected nodes. 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figures/machine-learning/perceptron.pdf}
+    \caption{Schematic of a single artificial neuron (perceptron). The neuron receives multiple input signals, each associated with a weight, and computes a weighted sum of these inputs, optionally a so-called bias is a added. An activation function is then applied to this sum to produce the neuron's output.}
+    \label{fig:perceptron}
+\end{figure}
+The simplest unit of a neural network is the artificial neuron, also known as a perceptron \cite{perceptron}. A perceptron takes multiple input signals, each associated with a weight, and computes a weighted sum of these inputs. An activation function is then applied to this sum to produce the neuron's output. This structure is illustrated in Figure \ref{fig:perceptron}. The general structure of a perceptron is inspired by the biological neurons. The activation function introduces non-linearity into the model, allowing it to learn complex patterns in the data. Common activation functions include the sigmoid function, hyperbolic tangent (tanh), and rectified linear unit (ReLU) \cite{relu}.
+
+
+\subsection{Dense Neural Network}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/machine-learning/dnn.pdf}
+    \caption{Schematic of a dense neural network with multiple layers. Each layer consists of multiple neurons, and each neuron in one layer is connected to every neuron in the subsequent layer.}
+    \label{fig:dnn}
+\end{figure}
+A dense neural network (DNN), also known as a fully connected neural network \cite{backpropagation}, is a type of artificial neural network where each neuron in one layer is connected to every neuron in the subsequent layer. This architecture allows for the learning of complex relationships between input features and output targets. A schematic of a dense neural network is shown in Figure \ref{fig:dnn}.\\
+A DNN consists of an input layer, one or more hidden layers, and an output layer. The input layer receives the input features, while the hidden layers perform a series of transformations on the data using the weights and biases associated with each neuron. The output layer produces the final predictions. Each layer applies an activation function to the weighted sum of inputs from the previous layer, enabling the network to learn non-linear mappings. The depth (number of layers) and width (number of neurons per layer) of the network can be adjusted.
+
+\subsection{Recurrent Neural Networks}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/machine-learning/rnn.pdf}
+    \caption{Schematic of a recurrent neural network (RNN). The RNN processes sequences of data by maintaining a hidden state that captures information from previous time steps. The unfolded representation illustrates how the RNN operates over multiple time steps.}
+    \label{fig:rnn}
+\end{figure}
+Dense neural networks require their inputs to have a fixed size. However, in many applications, including particle physics, the input data can vary in size. For example, the number of particles detected in an event can differ from one event to another. To handle such sequential data, recurrent neural networks (RNNs) \cite{rnn} are employed. RNNs are designed to process sequences of data by maintaining a hidden state that captures information from previous time steps. A schematic of an RNN is shown in Figure \ref{fig:rnn}.\\
+RNNs consist of a series of interconnected neurons that process input data sequentially. At each time step, the RNN takes an input vector and combines it with the hidden state from the previous time step to produce a new hidden state. This hidden state is then used to generate the output for the current time step. The recurrent connections allow the RNN to retain information from previous inputs, enabling it to learn temporal dependencies in the data. One common variant of RNNs is the Long Short-Term Memory (LSTM) network \cite{lstm}, which addresses the vanishing gradient problem and allows for learning long-term dependencies more effectively.
+
+\subsection{Transformer}
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[]{figures/machine-learning/dpa.pdf}
+        \caption{Scaled Dot Product Attention}
+        \label{fig:dpa}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[]{figures/machine-learning/mha.pdf}
+        \caption{Multi-Head Attention}
+        \label{fig:mha}
+    \end{subfigure}
+    \caption{Schematics of attention mechanisms. (a) Scaled Dot Product Attention computes attention scores between query and key vectors, scales them, applies a softmax function to obtain attention weights, and uses these weights to compute a weighted sum of the value vectors. (b) Multi-Head Attention consists of multiple parallel attention heads, each performing scaled dot product attention on linearly transformed versions of the input queries, keys, and values. The outputs of all heads are concatenated and linearly transformed to produce the final output.}
+    \label{fig:attention}
+\end{figure}
+The transformer architecture deals with sequential data, similar to RNNs, but it does so using a mechanism attention rather than recurrent connections. This allows transformer to process information in parallel, making them more efficient for training on large datasets. Additionally, transformer can capture long-range dependencies in the data more effectively than RNNs, as they relate all elements of the input sequence to each other through attention mechanisms.\\
+The core component of the attention mechanism is the \textit{multi-head attention} (MHA) \cite{attention_is_all_you_need}, which allows the model to focus on different parts of the input sequence simultaneously. A schematic of the MHA mechanism is shown in Figure \ref{fig:mha}.\\

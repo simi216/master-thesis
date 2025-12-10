@@ -412,13 +412,17 @@ FUNCTION {format.names}
       { "" } % empty if no authors
     if$
   } if$
-}FUNCTION {format.names.ed}
+}
+FUNCTION {format.names.ed}
 {
   format.names
 }
 FUNCTION {format.authors}
 { author "author" format.names
-    duplicate$ empty$ 'skip$
+  duplicate$ empty$
+    { pop$
+      collaboration "collaboration" bibinfo.check
+    }
     { collaboration "collaboration" bibinfo.check
       duplicate$ empty$ 'skip$
         { " (" swap$ * ")" * }

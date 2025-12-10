@@ -3,9 +3,11 @@
     \usetikzlibrary{positioning}
 
 \tikzset{basic/.style={draw,fill=blue!20,text width=1em,text badly centered}}
-\tikzset{input/.style={basic,circle}}
+\tikzset{input/.style={basic,circle,fill=red!30}}
 \tikzset{weights/.style={basic,rectangle}}
-\tikzset{functions/.style={basic,circle,fill=blue!10}}
+\tikzset{sum/.style={basic,circle,fill=green!30}}
+\tikzset{functions/.style={basic,circle,fill=blue!30}}
+
 
 \begin{document}
     \begin{tikzpicture}
@@ -16,20 +18,20 @@
         \draw (0.75em,0em) -- (-0.75em,0em);
         \node[right of=center] (right) {};
             \path[draw,thick,->] (center) -- (right);
-        \node[functions,left=3em of center] (left) {$\sum$};
+        \node[sum,left=3em of center] (left) {$\sum$};
             \path[draw,thick,->] (left) -- (center);
-        \node[weights,left=3em of left] (2) {$w_2$} -- (2) node[input,left of=2] (l2) {$x_2$};
+        \coordinate[left of=left] (input);
+        \node[weights,above =0.5em of input] (2) {$w_2$} -- (2) node[input,left of=2] (l2) {$x_2$};
             \path[draw,thick,->] (l2) -- (2);
             \path[draw,thick,->] (2) -- (left);
         \node[below of=2] (dots) {$\vdots$} -- (dots) node[left of=dots] (ldots) {$\vdots$};
-        \node[weights,below of=dots] (n) {$w_n$} -- (n) node[input,left of=n] (ln) {$x_n$};
+        \node[weights,below = 0.5em of dots] (n) {$w_n$} -- (n) node[input,left of=n] (ln) {$x_n$};
             \path[draw,thick,->] (ln) -- (n);
             \path[draw,thick,->] (n) -- (left);
         \node[weights,above of=2] (1) {$w_1$} -- (1) node[input,left of=1] (l1) {$x_1$};
             \path[draw,thick,->] (l1) -- (1);
             \path[draw,thick,->] (1) -- (left);
-        \node[weights,above of=1] (0) {$w_0$} -- (0) node[input,left of=0] (l0) {$1$};
-            \path[draw,thick,->] (l0) -- (0);
+        \node[weights,above = 1.5em of left] (0) {$b$};
             \path[draw,thick,->] (0) -- (left);
         \node[below of=ln,font=\scriptsize] {inputs};
         \node[below of=n,font=\scriptsize] {weights};

@@ -1,5 +1,4 @@
-\NeedsTeXFormat{LaTeX2e}[2005/12/01]
-
+%\NeedsTeXFormat{LaTeX2e}[2005/12/01]
 \documentclass[master,
                oneside,
                BCOR10mm,
@@ -8,21 +7,27 @@
                %final,          %% Endversion; draft fuer schnelles Kompilieren
                ]{GAUBM}
 
-\usepackage{graphicx}
-%\usepackage{fancyhdr}
-%\usepackage{subcaption}
 \usepackage{float}
 \usepackage{placeins}
-\usepackage{wrapfig} 
-%\usepackage{tocloft}
+%\usepackage{wrapfig} 
 \usepackage{setspace}
 \usepackage{babel}
 \usepackage{calc}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{subfigure} % important
-\usepackage{amsmath,amssymb}
-
+\usepackage{caption}
+\usepackage{subcaption} % important
+\usepackage{amsmath,amssymb, amsfonts}
+\usepackage{mathrsfs}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{hhline}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{dcolumn}
+\usepackage{bm}
+\usepackage{siunitx}
+\usepackage{xspace}
 \usepackage{lmodern}
 
 \usepackage[comma,numbers,sort&compress]{natbib}
@@ -33,9 +38,6 @@
 \input{style}
 
 \newcommand{\tabheadfont}[1]{\textbf{#1}}
-\usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{array}
 
 \usepackage{textcomp,gensymb}
 \usepackage[colorlinks=false,
@@ -44,7 +46,6 @@
             bookmarksopen=true,
             bookmarksnumbered=true
             ]{hyperref}
-\usepackage{cleveref}
 
 
 \begin{document}
@@ -86,6 +87,7 @@ Projects in Theoretical Physics}
 \include{chapters/04-atlas-detector}
 
 
+
 \appendix
 \chapter{Additional Plots}
 
@@ -96,10 +98,10 @@ Projects in Theoretical Physics}
 
 \bibliography{bthesis_datenbank} 
 
-\chapter*{Danksagung}
-Dank\dots
+%\chapter*{Danksagung}
+%Dank\dots
 
-\begin{otherlanguage}{ngerman}
-\Declaration
-\end{otherlanguage}
+%\begin{otherlanguage}{ngerman}
+%\Declaration
+%\end{otherlanguage}
 \end{document}

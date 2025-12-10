@@ -18,6 +18,83 @@
 }
 
 
+@inproceedings{attention_is_all_you_need,
+ author = {Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and Uszkoreit, Jakob and Jones, Llion and Gomez, Aidan N and Kaiser, \L ukasz and Polosukhin, Illia},
+ booktitle = {Advances in Neural Information Processing Systems},
+ editor = {I. Guyon and U. Von Luxburg and S. Bengio and H. Wallach and R. Fergus and S. Vishwanathan and R. Garnett},
+ pages = {},
+ publisher = {Curran Associates, Inc.},
+ title = {Attention is All you Need},
+ volume = {30},
+ year = {2017}
+}
+
+
+@article{backpropagation,
+	author = {Rumelhart, David E. and Hinton, Geoffrey E. and Williams, Ronald J.},
+	date = {1986/10/01},
+	isbn = {1476-4687},
+	journal = {Nature},
+	number = {6088},
+	pages = {533--536},
+	title = {Learning representations by back-propagating errors},
+	volume = {323},
+	year = {1986},
+  }
+
+
+
+@article{lstm,
+  author   = {Hochreiter, Sepp and Schmidhuber, Jürgen},
+  title    = {Long Short-Term Memory},
+  journal  = {Neural Computation},
+  volume   = {9},
+  number   = {8},
+  pages    = {1735-1780},
+  year     = {1997},
+  month    = {11},
+  abstract = {Learning to store information over extended time intervals by recurrent backpropagation takes a very long time, mostly because of insufficient, decaying error backflow. We briefly review Hochreiter's (1991) analysis of this problem, then address it by introducing a novel, efficient, gradient based method called long short-term memory (LSTM). Truncating the gradient where this does not do harm, LSTM can learn to bridge minimal time lags in excess of 1000 discrete-time steps by enforcing constant error flow through constant error carousels within special units. Multiplicative gate units learn to open and close access to the constant error flow. LSTM is local in space and time; its computational complexity per time step and weight is O. 1. Our experiments with artificial data involve local, distributed, real-valued, and noisy pattern representations. In comparisons with real-time recurrent learning, back propagation through time, recurrent cascade correlation, Elman nets, and neural sequence chunking, LSTM leads to many more successful runs, and learns much faster. LSTM also solves complex, artificial long-time-lag tasks that have never been solved by previous recurrent network algorithms.},
+  issn     = {0899-7667}
+}
+
+@article{rnn,
+  title   = {Finding structure in time},
+  journal = {Cognitive Science},
+  volume  = {14},
+  number  = {2},
+  pages   = {179-211},
+  year    = {1990},
+  issn    = {0364-0213},
+  author  = {Jeffrey L. Elman}
+}
+
+
+
+@inproceedings{relu,
+  author    = {Nair, Vinod and Hinton, Geoffrey E.},
+  title     = {Rectified linear units improve restricted boltzmann machines},
+  year      = {2010},
+  isbn      = {9781605589077},
+  publisher = {Omnipress},
+  address   = {Madison, WI, USA},
+  booktitle = {Proceedings of the 27th International Conference on International Conference on Machine Learning},
+  pages     = {807-814},
+  numpages  = {8},
+  location  = {Haifa, Israel},
+  series    = {ICML'10}
+}
+
+
+@article{perceptron,
+  author  = {Rosenblatt, F.},
+  journal = {Psychological Review},
+  number  = {6},
+  pages   = {386-408},
+  title   = {The perceptron: A probabilistic model for information storage and organization in the brain.},
+  volume  = {65},
+  year    = {1958}
+}
+
 
 @article{PDG2024,
   title         = {Review of Particle Physics},
@@ -5894,7 +5971,7 @@
 }
 
 @article{ATLAS:Lumi,
-  author        = {{ATLAS Collaboration}},
+  collaboration = {{ATLAS Collaboration}},
   title         = {{Luminosity determination in $pp$ collisions at $\sqrt{s}=13$ TeV using the ATLAS detector at the LHC}},
   eprint        = {2212.09379},
   archiveprefix = {arXiv},
@@ -5905,21 +5982,21 @@
 }
 
 @article{atlas_tdr,
-  author  = {{ATLAS Collaboration}},
-  title   = {{The ATLAS Experiment at the CERN Large Hadron Collider}},
-  journal = {JINST},
-  volume  = {3},
-  pages   = {S08003},
-  year    = {2008}
+  collaboration = {ATLAS Collaboration},
+  title         = {{The ATLAS Experiment at the CERN Large Hadron Collider}},
+  journal       = {J. Instrum.},
+  volume        = {3},
+  pages         = {S08003},
+  year          = {2008}
 }
 
 @book{atlas_ID_tdr,
-  author    = {{ATLAS Collaboration}},
-  title     = {{ATLAS inner detector: Technical Design Report, 1}},
-  publisher = {CERN},
-  address   = {Geneva},
-  series    = {Technical design report. ATLAS},
-  year      = {1997}
+  collaboration = {{ATLAS Collaboration}},
+  title         = {{ATLAS inner detector: Technical Design Report, 1}},
+  publisher     = {CERN},
+  address       = {Geneva},
+  series        = {Technical design report. ATLAS},
+  year          = {1997}
 }
 
 @article{Z_decay_BR,
@@ -5997,7 +6074,7 @@
 }
 
 @article{ATLAS:2010arf,
-  author        = {{ATLAS Collaboration}},
+  collaboration = {{ATLAS Collaboration}},
   title         = {{The ATLAS Simulation Infrastructure}},
   archiveprefix = {arXiv},
   primaryclass  = {physics.ins-det},

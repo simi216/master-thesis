@@ -19,7 +19,7 @@
 %% The Current Maintainer of this work is Thomas Pruschke
 %% This work consists of all files listed in README.
 %% 
-\NeedsTeXFormat{LaTeX2e}[2005/12/01]
+%\NeedsTeXFormat{LaTeX2e}[2005/12/01]
 \ProvidesClass{GAUBM}
 [2009/03/12 v1.0 GAU Vorlage für Abschlussarbeit Physik]
 \newif\if@nomtotoc\@nomtotocfalse
