@@ -1,12 +1,13 @@
 \chapter{Theoretical Background}
+\label{chap:background}
 \section{The Standard Model of Particle Physics}
 \label{sec:standard_model}
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.8\textwidth]{figures/standard_model.pdf}
-\caption{The particles of the Standard Model. Particle properties taken from Ref.~\cite{PDG2024}.}
-\label{fig:standard_model_particles}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/standard_model.pdf}
+    \caption{The particles of the Standard Model. Particle properties taken from Ref.~\cite{PDG2024}.}
+    \label{fig:standard_model_particles}
 \end{figure}
 The Standard Model (SM) of particle physics is a quantum field theory describing
 three of the four fundamental interactions of nature—electromagnetic, weak and strong—and the elementary particles on which they act.
@@ -15,7 +16,7 @@ It is formulated as a renormalisable, Lorentz-invariant gauge theory with gauge 
 SU(3)_C \times SU(2)_L \times U(1)_Y,
 \]
 and its structure has been established in a series of seminal works~\cite{standardmodel0,standardmodel1,standardmodel2,standardmodel7,standardmodel5,standardmodel9}. 
-A summary of the particle content is shown in Fig.~\ref{fig:standard_model_particles}.
+A summary of the particle content is shown in \Cref{fig:standard_model_particles}.
 
 The elementary particles fall into fermions and bosons. Fermions are spin-$\tfrac{1}{2}$ fields that constitute matter, organised into three generations of quarks and leptons. 
 Quarks carry colour charge and participate in the strong interaction; leptons do not.
@@ -120,7 +121,7 @@ These aspects of QCD are essential for the reconstruction of hadronic final stat
         \caption{}
         \label{fig:top_production_gg_u_channel}
     \end{subfigure}
-    \caption{Leading order Feynman diagrams for top quark pair production in \subref{fig:top_production_qq_s_channel} quark-antiquark annihilation and \subref{fig:top_production_gg_t_channel}, \subref{fig:top_production_gg_s_channel} \& \subref{fig:top_production_gg_u_channel} gluon fusion (ggF).}
+    \caption{Leading order Feynman diagrams for top quark pair production in \subrefb{fig:top_production_qq_s_channel} quark-antiquark annihilation and \subrefb{fig:top_production_gg_t_channel}, \subrefb{fig:top_production_gg_s_channel} \& \subrefb{fig:top_production_gg_u_channel} gluon fusion (ggF).}
     \label{fig:top_production}
 \end{figure}
 The top quark is the heaviest known elementary particle. Its predicted existence arose from the already observed CP-Violiation in the kaon system, which required a third generation of quarks to be explained within the SM framework~\cite{kobayashi_maskawa}. Furthermore, the discovery of the bottom quark in 1977~\cite{bottom_discovery} implied the existence of its weak isospin partner, the top quark. The top quark was eventually discovered in 1995 by the \cdf and \dzero collaborations at the \tevatron collider~\cite{top_discovery_cdf,top_discovery_d0}.
@@ -135,7 +136,7 @@ Due to its large mass, the top quark also has the shortest lifetime of all quark
 Notably, the top quark also decays before its spin can decorrelate, preserving spin information in the angular distributions of its decay products~\cite{spin_decorrelation_time}. This unique feature enables precise measurements of top quark spin correlations and polarisation.
 At hadron colliders like the \lhc, top quarks are predominantly produced in pairs via the strong interaction.
 
-The leading order (LO) Feynman diagrams for top quark pair production are shown in Fig.~\ref{fig:top_production}. 
+The leading order (LO) Feynman diagrams for top quark pair production are shown in \Cref{fig:top_production}. 
 At the \lhc, the dominant production mechanism is gluon fusion (ggF).
 This is due to the high gluon density in the proton at the relevant Bjorken-$x$ values for top quark production.
 
@@ -152,8 +153,9 @@ Based on these $W$ decay modes, top quark pair events are categorised into three
     \caption{Leading order Feynman diagram for top quark pair production with dileptonic decay.}
     \label{fig:dilepton_ttbar_decay}
 \end{figure}
-The dileptonic decay channel, where both $W$ bosons decay leptonically, has a branching ratio of about $1/9$ and results in a final state with two charged leptons, two neutrinos and two $b$ quarks, as illustrated in Fig.~\ref{fig:dilepton_ttbar_decay}. Due to the lower branching ratio, the dileptonic channel has a smaller event yield compared to the other channels. However, it offers a cleaner signature with reduced background contamination, making it particularly suitable for precision measurements of top quark properties. The presence of two neutrinos in the final state leads to missing transverse energy (\met) in the event, complicating the full reconstruction of the top quark kinematics. Advanced techniques, such as kinematic fitting and multivariate analyses, are often employed to address these challenges and extract maximum information from the dileptonic events.
+The dileptonic decay channel, where both $W$ bosons decay leptonically, has a branching ratio of about $1/9$ and results in a final state with two charged leptons, two neutrinos and two $b$ quarks, as illustrated in \Cref{fig:dilepton_ttbar_decay}. Due to the lower branching ratio, the dileptonic channel has a smaller event yield compared to the other channels. However, it offers a cleaner signature with reduced background contamination, making it particularly suitable for precision measurements of top quark properties. The presence of two neutrinos in the final state leads to missing transverse energy (\met) in the event, complicating the full reconstruction of the top quark kinematics. Advanced techniques, such as kinematic fitting and multivariate analyses, are often employed to address these challenges and extract maximum information from the dileptonic events.
 \subsubsection{Kinematic Constraints}
+\label{sec:kinematic_constraints}
 Assuming both $W$ bosons and top quarks are on-shell, the following kinematic constraints can be applied to the dileptonic decay channel
 \begin{align}
     (p_{\ell_1} + p_{\nu_1})^2 &= m_W^2, \label{eq:w_boson1_mass}\\
@@ -179,3 +181,14 @@ In Ref.~\cite{entanglement_top_quarks} it was proposed to measure entanglement i
 Even though the top quark decays before it can hadronise, near the production threshold of top quark pairs, the strong interaction between the top and antitop quarks can lead to the formation of transient bound states, coined as toponium~\cite{toponium_1,toponium_2,toponium_3}. These bound state effects can influence the production cross section and kinematic distributions of top quark pairs near threshold. The \cms collaboration has recently observed an excess in the invariant mass distribution of top quark pairs near threshold, consistent with the presence of toponium bound state effects~\cite{CMS2025Pseudoscalar}. The Modelling of these effects is based on non-relativistic QCD (NRQCD) calculations, which account for the strong interaction dynamics between the top and antitop quarks in the near-threshold region~\cite{NRQCD_toponium_1, NRQCD_toponium_2}. Understanding and accurately modelling these bound state effects is crucial for precision measurements of top quark properties and for searches for new physics in top quark pair production.
 
 This study is also investigating the threshold region of top quark pair production and makes use of angular correlations between the decay products as a probe of the underlying dynamics, including potential bound state effects.
+
+\subsection{Spin Sensitive Angular Variables}
+\label{sec:spin_sensitive_variables}
+To study spin correlations and entanglement in top quark pairs, a pair of spin-sensitive angular variables are used.
+
+To define the variables, the momenta of the leptons are first boosted into their respective parent top quark rest frames $\hat \ell_{t}^+$ and $\hat \ell^-_t$. The inner product of these unit vectors then defines the variable
+\begin{equation}
+    \label{eq:c_hel}
+    c_{\text{hel}} = \hat \ell_{t}^+ \cdot \hat \ell_{t}^-.
+\end{equation}
+Analagously, one can define the variable $c_{\text{han}}$, where either of the lepton momenta components parallel to the parent top quark momentum in the \ttbar rest frame is flipped before taking the inner product \cite{bernreuther_nlospin_2004,bernreuther_spin_observables}.

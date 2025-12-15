@@ -1,21 +1,22 @@
-%\NeedsTeXFormat{LaTeX2e}[2005/12/01]
 \documentclass[master,
                oneside,
-               BCOR10mm,
+               BCOR=10mm,
                ngerman,
                english,
-               %final,          %% Endversion; draft fuer schnelles Kompilieren
+               final,          %% Endversion; draft fuer schnelles Kompilieren
                ]{GAUBM}
 
 \usepackage{float}
+\usepackage{graphicx}
 \usepackage{placeins}
-%\usepackage{wrapfig} 
+\usepackage{wrapfig} 
 \usepackage{setspace}
 \usepackage{babel}
 \usepackage{calc}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{caption}
+\usepackage{caption}  % important
+\usepackage[labelfont=bf]{caption}  % important
 \usepackage{subcaption} % important
 \usepackage{amsmath,amssymb, amsfonts}
 \usepackage{mathrsfs}
@@ -23,16 +24,17 @@
 \usepackage{booktabs}
 \usepackage{hhline}
 \usepackage{array}
-\usepackage{graphicx}
 \usepackage{dcolumn}
 \usepackage{bm}
 \usepackage{siunitx}
 \usepackage{xspace}
 \usepackage{lmodern}
-
 \usepackage[comma,numbers,sort&compress]{natbib}
 
 
+\makeatletter
+\newcommand{\subrefb}[1]{(\subref{#1})}
+\makeatother
 \bibliographystyle{bthesis}
 
 \input{style}
@@ -46,13 +48,14 @@
             bookmarksopen=true,
             bookmarksnumbered=true
             ]{hyperref}
+\usepackage{cleveref}
 
 
 \begin{document}
 
 \ThesisAuthor{Siemen Henning}{Aulich}
 \PlaceOfBirth{Emden}
-\ThesisTitle{}{Improving Event Reconstruction for Dileptonic Decays of Top Quarks Pairs Using Machine Learning}
+\ThesisTitle{Improving Event Reconstruction for Dileptonic Decays of Top Quarks Pairs Using Machine Learning}{}%{Verbesserung der Event Rekonstruktion für dilpetonische Zerfälle von Top Quark Paaren mit Machine Learning}
 \FirstReferee{Prof.~Dr.~Stan Lai}
 \Institute{DESY Hamburg}
 \SecondReferee{Dr.~Katharina Behr}
@@ -68,29 +71,33 @@ Projects in Theoretical Physics}
 \maketitle
 \cleardoublepage
 \begin{abstract}
-  Here the key results of the thesis can be presented in about
-  half a page.
+  \noindent Many of the recent highlights in particle physics research are related to top quark physics'. These include both the stringent tests of spin correlations and quantum effects in pairs of top quarks ($t\bar{t}$), and the observation of a possible quasi-bound state resonance in the $t\bar{t}$
+  invariant mass spectrum. The latter presents a very exciting opportunity to extend our current understanding of non-relativistic Quantum Chromodynamics. Both effects are predominantly studied in the dilepton decay channel of the top quark in a mass range close to the $t\bar{t}$ production threshold.
+
+  The dilepton final state contains two neutrinos, besides two charged leptons and two b-quark jets. Probing this system requires a precise reconstruction of the top quarks, which is complicated by the presence of the two neutrinos.  While analytical regression strategies primarily focus on inferring the neutrino momenta, the problem of correctly assigning b-jets to their parent top quarks remains largely understudied. However, many of the sensitive variables used in $t\bar{t}$  precision measurements depend critically on the correct assignment of the jets.
+
+  Inspired by the success of machine learning architectures in tackling the assignment challenge for hadronic decay channels, this work investigates using a transformer model for the dilepton channel. An architecture specifically tailored to this channels topology is shown to outperform all existing methods in assigning reconstructed particles to their parent partons, improving the resolution of relevant physics observables. Furthermore, it is investigated how these efforts can be combined with neutrino regression methods to offer a full reconstruction pipeline. Applying these methods to existing and upcoming analyses promises further enhancements in the sensitivity and precision of searches and measurements alike.
   \bigskip\par
-  \textbf{Keywords:} Physics, Master thesis
+  \textbf{Keywords:} Top Quark, Machine Learning, Event Reconstruction, Dilepton Channel, Transformer Networks
 \end{abstract}
 
 \cleardoublepage
-\mainmatter
 \tableofcontents
+\mainmatter
 
 \include{chapters/01-introduction}
-
 \include{chapters/02-background}
-
 \include{chapters/03-methods}
-
-\include{chapters/04-atlas-detector}
+%\include{chapters/04-atlas-detector}
+\include{chapters/05-reconstruction-methods}
+\include{chapters/06-ml-jet-selection}
+\include{chapters/07-performance-evaluation}
+\include{chapters/08-conclusion}
 
 
 
 \appendix
-\chapter{Additional Plots}
-
+\include{chapters/a1-additional-plots}
 
 
 \cleardoublepage

@@ -1,6 +1,9 @@
 \chapter{Machine Learning in Particle Physics}
-Since this work focuses on improving the event reconstruction of dileptonic \ttbar decays using machine learning techniques, this chapter provides an overview of the fundamental concepts and methodologies employed in machine learning.\\
-In the context of this thesis, machine learning refers to a subset of artificial intelligence that involves the development of algorithms and statistical models that enable computers to perform specific tasks without explicit instructions. Instead, these algorithms learn patterns and relationships from data to make predictions or decisions.\\
+\label{chap:machine-learning}
+Since this work focuses on improving the event reconstruction of dileptonic \ttbar decays using machine learning techniques, this chapter provides an overview of the fundamental concepts and methodologies employed in machine learning.
+
+In the context of this thesis, machine learning refers to a subset of artificial intelligence that involves the development of algorithms and statistical models that enable computers to perform specific tasks without explicit instructions. Instead, these algorithms learn patterns and relationships from data to make predictions or decisions.
+
 From a computational perspective, machine learning can be viewed as the optimization of a function $f:\mathbb{R}^n \rightarrow \mathbb{R}^m$ that maps input data points $\mathbf{x} \in \mathbb{R}^n$ to output predictions $\mathbf{y} \in \mathbb{R}^m$. The function $f$ is parameterized by a set of learnable parameters $\theta$, which are adjusted during the training process to minimize a predefined \textit{loss function} $L(\mathbf{y}, f(\mathbf{x}; \theta))$. The loss function quantifies the discrepancy between the predicted outputs and the true target values, guiding the optimization process.
 
 
@@ -33,53 +36,74 @@ Since in particle physics, simulated data is often used for training and backgro
 
 
 \section{Neural Networks}
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=0.6\textwidth]{figures/machine-learning/perceptron.pdf}
     \caption{Schematic of a single artificial neuron (perceptron). The neuron receives multiple input signals, each associated with a weight, and computes a weighted sum of these inputs, optionally a so-called bias is a added. An activation function is then applied to this sum to produce the neuron's output.}
     \label{fig:perceptron}
 \end{figure}
-The simplest unit of a neural network is the artificial neuron, also known as a perceptron \cite{perceptron}. A perceptron takes multiple input signals, each associated with a weight, and computes a weighted sum of these inputs. An activation function is then applied to this sum to produce the neuron's output. This structure is illustrated in Figure \ref{fig:perceptron}. The general structure of a perceptron is inspired by the biological neurons. The activation function introduces non-linearity into the model, allowing it to learn complex patterns in the data. Common activation functions include the sigmoid function, hyperbolic tangent (tanh), and rectified linear unit (ReLU) \cite{relu}.
+The simplest unit of a neural network is the artificial neuron, also known as a perceptron \cite{perceptron}. A perceptron takes multiple input signals, each associated with a weight, and computes a weighted sum of these inputs. An activation function is then applied to this sum to produce the neuron's output. This structure is illustrated in \Cref{fig:perceptron}. The general structure of a perceptron is inspired by the biological neurons. The activation function introduces non-linearity into the model, allowing it to learn complex patterns in the data. Common activation functions include the sigmoid function, hyperbolic tangent (tanh), and rectified linear unit (ReLU) \cite{relu}.
 
 
 \subsection{Dense Neural Network}
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=0.7\textwidth]{figures/machine-learning/dnn.pdf}
     \caption{Schematic of a dense neural network with multiple layers. Each layer consists of multiple neurons, and each neuron in one layer is connected to every neuron in the subsequent layer.}
     \label{fig:dnn}
 \end{figure}
-A dense neural network (DNN), also known as a fully connected neural network \cite{backpropagation}, is a type of artificial neural network where each neuron in one layer is connected to every neuron in the subsequent layer. This architecture allows for the learning of complex relationships between input features and output targets. A schematic of a dense neural network is shown in Figure \ref{fig:dnn}.\\
+A dense neural network (DNN), also known as a fully connected neural network \cite{backpropagation}, is a type of artificial neural network where each neuron in one layer is connected to every neuron in the subsequent layer. This architecture allows for the learning of complex relationships between input features and output targets. A schematic of a dense neural network is shown in \Cref{fig:dnn}.
+
 A DNN consists of an input layer, one or more hidden layers, and an output layer. The input layer receives the input features, while the hidden layers perform a series of transformations on the data using the weights and biases associated with each neuron. The output layer produces the final predictions. Each layer applies an activation function to the weighted sum of inputs from the previous layer, enabling the network to learn non-linear mappings. The depth (number of layers) and width (number of neurons per layer) of the network can be adjusted.
 
 \subsection{Recurrent Neural Networks}
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=0.7\textwidth]{figures/machine-learning/rnn.pdf}
     \caption{Schematic of a recurrent neural network (RNN). The RNN processes sequences of data by maintaining a hidden state that captures information from previous time steps. The unfolded representation illustrates how the RNN operates over multiple time steps.}
     \label{fig:rnn}
 \end{figure}
-Dense neural networks require their inputs to have a fixed size. However, in many applications, including particle physics, the input data can vary in size. For example, the number of particles detected in an event can differ from one event to another. To handle such sequential data, recurrent neural networks (RNNs) \cite{rnn} are employed. RNNs are designed to process sequences of data by maintaining a hidden state that captures information from previous time steps. A schematic of an RNN is shown in Figure \ref{fig:rnn}.\\
-RNNs consist of a series of interconnected neurons that process input data sequentially. At each time step, the RNN takes an input vector and combines it with the hidden state from the previous time step to produce a new hidden state. This hidden state is then used to generate the output for the current time step. The recurrent connections allow the RNN to retain information from previous inputs, enabling it to learn temporal dependencies in the data. One common variant of RNNs is the Long Short-Term Memory (LSTM) network \cite{lstm}, which addresses the vanishing gradient problem and allows for learning long-term dependencies more effectively.
+Dense neural networks require their inputs to have a fixed size. However, in many applications, including particle physics, the input data can vary in size. For example, the number of particles detected in an event can differ from one event to another. To handle such sequential data, recurrent neural networks (RNNs) \cite{rnn} are employed. RNNs are designed to process sequences of data by maintaining a hidden state that captures information from previous time steps. A schematic of an RNN is shown in \Cref{fig:rnn}.
+
+RNNs consist of a series of interconnected neurons that process input data sequentially. At each time step, the RNN takes an input vector and combines it with the hidden state from the previous time step to produce a new hidden state. This hidden state is then used to generate the output for the current time step. The recurrent connections allow the RNN to retain information from previous inputs, enabling it to learn temporal dependencies in the data. One common variant of RNNs is the Long Short-Term Memory (LSTM) network \cite{lstm}, which addresses the vanishing gradient problem and allows for learning long-term dependencies more effectively. Another caveat of RNNs is that they are inherently sequential in nature, making them less suited for data without inherent order, such as sets of particles in an event.
 
 \subsection{Transformer}
-\begin{figure}[h]
+\label{sec:transformer}
+\begin{figure}[ht]
     \centering
-    \begin{subfigure}[b]{0.45\textwidth}
+    \begin{subfigure}[b]{0.3\textwidth}
         \centering
-        \includegraphics[]{figures/machine-learning/dpa.pdf}
-        \caption{Scaled Dot Product Attention}
+        \includegraphics[scale = 0.71]{figures/machine-learning/dpa.pdf}
+        \caption{\centering Scaled \\ Dot-Product Attention}
         \label{fig:dpa}
     \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.45\textwidth}
+    \begin{subfigure}[b]{0.35\textwidth}
         \centering
-        \includegraphics[]{figures/machine-learning/mha.pdf}
+        \includegraphics[scale = 0.71]{figures/machine-learning/mha.pdf}
         \caption{Multi-Head Attention}
         \label{fig:mha}
     \end{subfigure}
-    \caption{Schematics of attention mechanisms. (a) Scaled Dot Product Attention computes attention scores between query and key vectors, scales them, applies a softmax function to obtain attention weights, and uses these weights to compute a weighted sum of the value vectors. (b) Multi-Head Attention consists of multiple parallel attention heads, each performing scaled dot product attention on linearly transformed versions of the input queries, keys, and values. The outputs of all heads are concatenated and linearly transformed to produce the final output.}
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[scale = 0.71]{figures/machine-learning/transformer_layer.pdf}
+        \caption{Transformer Layer}
+        \label{fig:transformer_layer}
+    \end{subfigure}
+    \caption{Different components of the transformer architecture: (a) Scaled Dot-Product Attention, (b) Multi-Head Attention, and (c) Transformer Layer.}
     \label{fig:attention}
 \end{figure}
-The transformer architecture deals with sequential data, similar to RNNs, but it does so using a mechanism attention rather than recurrent connections. This allows transformer to process information in parallel, making them more efficient for training on large datasets. Additionally, transformer can capture long-range dependencies in the data more effectively than RNNs, as they relate all elements of the input sequence to each other through attention mechanisms.\\
-The core component of the attention mechanism is the \textit{multi-head attention} (MHA) \cite{attention_is_all_you_need}, which allows the model to focus on different parts of the input sequence simultaneously. A schematic of the MHA mechanism is shown in Figure \ref{fig:mha}.\\
+The transformer architecture deals with sequential data, similar to RNNs, but it does so using a mechanism attention rather than recurrent connections. This allows transformer to process information in parallel, making them more efficient for training on large datasets. Additionally, transformer can capture long-range dependencies in the data more effectively than RNNs, as they relate all elements of the input sequence to each other through attention mechanisms.
+
+The core component of the transformer architecture is the attention mechanism, which allows the model to focus on different parts of the input sequence when making predictions. The most commonly used attention mechanism is the scaled dot-product attention \cite{attention_is_all_you_need}, illustrated in \Cref{fig:dpa}. In this mechanism, three vectors are computed for each input element: the query ($Q$), key ($K$), and value ($V$) vectors. The attention scores are calculated by taking the dot product of the query and key vectors, scaling them by the square root of the dimension of the key vectors, and applying a softmax function to obtain attention weights. These weights are then used to compute a weighted sum of the value vectors, producing the output of the attention mechanism.
+Multi-head attention, shown in \Cref{fig:mha}, extends the scaled dot-product attention by allowing the model to attend to different parts of the input sequence simultaneously. This is achieved by using multiple parallel attention heads, each with its own set of learned linear transformations for the query, key, and value vectors. The outputs of all attention heads are concatenated and linearly transformed to produce the final output. This enables the model to capture diverse patterns and relationships in the data.
+
+The key, query and value vectors are typically obtained by applying learned linear transformations to the input embeddings. Depending on the type of relational information one wants to capture, one can choose to derive these vectors from different input sources. For example, in the \textit{self-attention mechanism}, all three vectors are derived from the same input sequence ($\hat q_t = \hat k_t=\hat v_t = \hat x_t$), allowing the model to relate different elements within the same sequence. In \textit{cross-attention}, the query vectors are derived from one sequence, while the key and value vectors are derived from another sequence ($\hat q_t = \hat x_{1,t}$, $\hat k_t=\hat v_t = \hat x_{2,t}$), enabling the model to relate information between two different sequences.
+\paragraph{Symmetries}
+In many applications, including particle physics, the input data exhibits certain symmetries that can be exploited to improve model performance.
+
+The attention mechanism has inherent permutation equivariances, that can be exploited. Self-attention is permutation equivariant to the input sequence, meaning that permuting the input elements results in a corresponding permutation of the output elements. This property is particularly useful when dealing with sets or unordered data, where the order of the elements does not carry any inherent meaning. Cross-attention is permutation equivariant to permutations of the query inputs and separately to permutations of the key/value inputs. This allows the model to effectively relate information between two different sequences, regardless of their order.
+
+\subsection{Training Neural Networks}
+Training neural networks involves optimizing the model's parameters (weights and biases) to minimize the loss function. The number of parameters in a neural network can be quite large, especially in deep architectures, making the optimization process computationally intensive. The most commonly used optimization algorithm for training neural networks is stochastic gradient descent (SGD) \cite{sgd}, which iteratively updates the model's parameters based on the gradients of the loss function with respect to the parameters. Modern variants of SGD, such as Adam \cite{adam}, incorporate adaptive learning rates and momentum to improve convergence.
+The backpropagation algorithm \cite{backpropagation} is used to efficiently compute the gradients of the loss function with respect to the model's parameters. It involves propagating the error signal backward through the network, allowing for the calculation of gradients at each layer. These gradients are then used by the optimization algorithm to update the parameters. The algorithm relies on the chain rule and nested sturcutre of the neural network to compute the gradients efficiently.
+Regularization techniques, such as dropout \cite{dropout} and weight decay, are often employed during training to prevent overfitting and improve the model's generalization capabilities. Dropout randomly deactivates a fraction of the neurons during training, forcing the network to learn more robust features. Weight decay adds a penalty term to the loss function based on the magnitude of the weights, discouraging overly complex models.

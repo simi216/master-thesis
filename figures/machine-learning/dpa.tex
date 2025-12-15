@@ -59,7 +59,7 @@
         thick
     },
     output/.style={
-        rectangle,
+        circle,
         fill=red!20,
         rounded corners=2mm,
         minimum height=2em,
@@ -90,7 +90,7 @@
     \node[matmul, above=2em of $(Q)!0.5!(K)$] (matmul) {MatMul};
     \node[scale_layer, above=1em of matmul] (scale) {Scale};
     \node[softmax, above=1em of scale] (softmax) {Softmax};
-    \node[matmul, above=14.5em of $(Q)!0.8!(V)$] (matmul2) {MatMul};
+    \node[matmul, above=12.5em of $(Q)!0.8!(V)$] (matmul2) {MatMul};
     \node[output,above=1.4em of matmul2] (result) {$\hat{y}_t$};
 
     % Paths
@@ -100,7 +100,7 @@
     \draw[arrow] (scale) -- (softmax);
     \draw[arrow] (softmax) -- (matmul2);
     \draw[arrow] (matmul2) -- (result);
-    \path[draw, arrow] (V) -- ++(0, 14.5em);
+    \path[draw, arrow] (V) -- ++(0, 12.5em);
 \end{tikzpicture}
 
 \end{document}
