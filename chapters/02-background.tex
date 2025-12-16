@@ -11,7 +11,7 @@
 \end{figure}
 The Standard Model (SM) of particle physics is a quantum field theory describing
 three of the four fundamental interactions of nature—electromagnetic, weak and strong—and the elementary particles on which they act.
-It is formulated as a renormalisable, Lorentz-invariant gauge theory with gauge group
+It is formulated as a renormalizable, Lorentz-invariant gauge theory with gauge group
 \[
 SU(3)_C \times SU(2)_L \times U(1)_Y,
 \]
@@ -58,7 +58,7 @@ leads to maximal parity violation and characteristic angular distributions of we
 where $g$ is the weak coupling constant, $\gamma^\mu$ are the Dirac matrices. The projection operator $(1 - \gamma^5)$ leads to a coupling exclusively to the left-handed components.
 Based on this, the left-handed particles are arranged in $SU(2)_L$ doublets corresponding, while the right-handed particles are singlets.
 
-For quarks, the weak eigenstates $d',s',b'$ are not identical to their mass eigenstates $d,s,b$. This misalignment is described by the Cabibbo-Kobayashi-Maskawa (CKM) matrix~\cite{cabibbo,kobayashi_maskawa}, which encodes flavour-changing transitions in charged-current interactions.
+For quarks, the weak eigenstates $d',s',b'$ are not identical to their mass eigenstates $d,s,b$. This misalignment is described by the Cabibbo-Kobayashi-Maskawa (CKM) matrix~\cite{cabibbo,kobayashi_maskawa}, which enables flavour-changing coupling in charged-current interactions.
 
 
 
@@ -88,7 +88,7 @@ first developed in~\cite{SJOSTRAND1985321,parton_shower} and extended in modern 
 \item \textbf{Hadronisation models}, such as the Lund string model~\cite{lund_model,SJOSTRAND1984469}, which describe the confinement-driven formation of hadrons.
 \end{itemize}
 
-These aspects of QCD are essential for the reconstruction of hadronic final states at the LHC and for modelling top-quark production and decay.
+These aspects of QCD are essential for the reconstruction of hadronic final states and for Monte Carlo simulations of \lhc physics.
 
 \section{Top Quark Physics}
 \label{sec:top-quark}
@@ -131,11 +131,11 @@ Currently, the world average of the top quark mass is measured to be~\cite{PDG20
 \end{equation}
 Along with the highest mass, the top quark also has the strongest Yukawa coupling to the Higgs boson, making it interesting for studies of the Higgs mechanism and electroweak symmetry breaking.
 
-Due to its large mass, the top quark also has the shortest lifetime of all quarks, about $5 \times 10^{-25}~\unit{\second}$~\cite{PDG2024}, which is shorter than the typical hadronisation timescale of $3 \times 10^{-24}~\unit{\second}$~\cite{hadronization_time_2}. Therefore, the top is the only quark that decays before it can hadronise, allowing for direct studies of its properties through its decay products.
+Due to its large mass, the top quark also has the shortest lifetime of all quarks, about $5 \times 10^{-25}~\unit{\second}$~\cite{PDG2024}, which is shorter than the typical hadronisation timescale of $3 \times 10^{-24}~\unit{\second}$~\cite{hadronization_time_2}. Therefore, the top is the only quark that decays before it hadronises, allowing for direct studies of its properties through its decay products.
 
 Notably, the top quark also decays before its spin can decorrelate, preserving spin information in the angular distributions of its decay products~\cite{spin_decorrelation_time}. This unique feature enables precise measurements of top quark spin correlations and polarisation.
-At hadron colliders like the \lhc, top quarks are predominantly produced in pairs via the strong interaction.
 
+At hadron colliders like the \lhc, top quarks are predominantly produced in pairs via the strong interaction.
 The leading order (LO) Feynman diagrams for top quark pair production are shown in \Cref{fig:top_production}. 
 At the \lhc, the dominant production mechanism is gluon fusion (ggF).
 This is due to the high gluon density in the proton at the relevant Bjorken-$x$ values for top quark production.
@@ -165,16 +165,16 @@ Assuming both $W$ bosons and top quarks are on-shell, the following kinematic co
     (\vec{p}_{\nu_1} + \vec{p}_{\nu_2})_{x} &= \met_x, \label{eq:met_x}\\
     (\vec{p}_{\nu_1} + \vec{p}_{\nu_2})_{y} &= \met_y. \label{eq:met_y}
 \end{align}
-If one assumes, the neutrinos to be massless, these six equations provide constraints on the six unknown components of the two neutrino momenta. Therefore, additional assumptions or techniques are required to fully reconstruct the event kinematics in the dileptonic channel. Due to the algebraic nature of the constraints, multiple solutions can exist for a given event, leading to ambiguities in the reconstruction \cite{sonnenschein_method, ellipse_method}. Various methods have been developed to address these challenges, including likelihood-based approaches \cite{neutrino_weighting_method}, matrix element methods, and machine learning techniques \cite{nu_square_flows}, which aim to optimally utilise the available information and improve the accuracy of the top quark kinematic reconstruction in dileptonic events.
+If one assumes, the neutrinos to be massless, these six equations provide constraints on the six unknown components of the two neutrino momenta. Therefore, additional assumptions or techniques are required to fully reconstruct the event kinematics in the dileptonic channel. Due to the algebraic nature of the constraints, multiple solutions can exist for a given event, leading to ambiguities in the reconstruction. Due to the effects of detector resolution and off-shell particles, this system of equation can also have no real-valued solution \cite{sonnenschein_method, ellipse_method}. Various methods have been developed to address these challenges, including likelihood-based approaches \cite{neutrino_weighting_method}, matrix element methods, and machine learning techniques \cite{nu_square_flows}, which aim to optimally utilise the available information and improve the accuracy of the top quark kinematic reconstruction in dileptonic events.
 
 
 \subsection{Spin Correlations in Top Quark Pairs}
 \label{sec:ttbar_entanglement}
-As before elaborated, the top quark decays before it can hadronise or its spin decorrelates. Therefore, the spin information of the top quark is directly transferred to its decay products. In top quark pair production, the spins of the top and antitop quarks are correlated due to the production mechanism. These spin correlations manifest in the angular distributions of the decay products, providing a unique opportunity to study the spin dynamics of the top quark.
+As elaborated before, the top quark decays before it can hadronise or its spin decorrelates. Therefore, the spin information of the top quark is directly transferred to its decay products. In top quark pair production, the spins of the top and antitop quarks are correlated due to the production mechanism. Due to the chiral nature of the weak interaction, these spin correlations manifest in the angular distributions of the decay products, particularly the charged leptons in the dileptonic decay channel.
 
-Recent studies at the \lhc began to explore quantum entanglement in top quark pairs~\cite{ATLAS2024Entanglement}. Entanglement generally describes a quantum mechanical phenomenon where the quantum states of two or more particles become correlated in such a way that the state of one particle cannot be described independently of the state of the other(s), even when the particles are separated by large distances~\cite{schrödinger_entanglement}. This property is expressed as the system having a non-seperable density matrix. While a general description of this phenomenon is beyond the scope of this thesis, entanglement can be tested using specific criterions. One such criterion is the \emph{Peres-Horodecki criterion}~\cite{peres_criterion,entanglement_two_qbits}, which states that if the partial transpose of the density matrix of a bipartite system has at least one negative eigenvalue, then the system is entangled. Considering top quark pairs as a bipartite system of two spin-$\tfrac{1}{2}$ particles (qubits), this criterion can be applied to test for entanglement in their spin states.
+Recent studies at the \lhc began to explore potential effects of quantum entanglement in top quark pairs~\cite{ATLAS2024Entanglement}. Entanglement generally describes a quantum mechanical phenomenon where the quantum states of two or more particles become correlated in such a way that the state of one particle cannot be described independently of the state of the other(s), even when the particles are separated by large distances~\cite{schrödinger_entanglement}. This property is expressed as the system having a non-seperable density matrix. While a general description of this phenomenon is beyond the scope of this thesis, entanglement can be tested using specific criterions. One such criterion is the \emph{Peres-Horodecki criterion}~\cite{peres_criterion,entanglement_two_qbits}, which states that if the partial transpose of the density matrix of a bipartite system has at least one negative eigenvalue, then the system is entangled. Considering top quark pair's spin as a bipartite system of two spin-$\tfrac{1}{2}$ particles (qubits), this criterion can be applied to test for entanglement in their spin states.
 
-In Ref.~\cite{entanglement_top_quarks} it was proposed to measure entanglement in top quark pairs produced at the \lhc by analysing the angular distributions of their decay products, specifically the charged leptons in the dileptonic decay channel. The study showed that by measuring the opening angle between the two leptons, one can construct an observable sensitive to the entanglement of the top quark spins. Due to the kinematics of the top quark pair production, the entanglement is expected to be more pronounced in certain regions of phase space, particularly at high invariant masses of the top quark pair system. One particular region of interest is the so-called \emph{threshold region}, where the top quark pair is produced with low relative velocity. In this region, the top quark is produced as a spin singlet state in about $\sim 80\%$ of the cases, leading to a strong entanglement signature \cite{toponium_2}. The \atlas collaboration has recently reported the first experimental evidence of quantum correlations consistent with entanglement in top quark pairs \cite{ATLAS2024Entanglement}.
+In Ref.~\cite{entanglement_top_quarks} it was proposed to measure entanglement in top quark pairs produced at the \lhc by analysing the angular distributions of their decay products, specifically the charged leptons in the dileptonic decay channel. The study showed that by measuring the opening angle between the two leptons, one can construct an observable sensitive to the entanglement of the top quark spins. Due to the kinematics of the top quark pair production, the entanglement is expected to be more pronounced in certain regions of phase space, one such region is at low invariant masses of the top quark pair system. One particular region of interest is the so-called \emph{threshold region}, where the top quark pair is produced with low relative velocity. In this region, the top quark is produced as a spin singlet state in about $\sim 80\%$ of the cases, leading to a strong entanglement signature \cite{toponium_2}. The \atlas collaboration has recently reported the first experimental evidence of quantum correlations consistent with entangled spin quantum states in top quark pairs \cite{ATLAS2024Entanglement}.
 
 \subsection{Top Quark Pair Bound State Effects}
 \label{sec:ttbar_toponium}
@@ -184,11 +184,11 @@ This study is also investigating the threshold region of top quark pair producti
 
 \subsection{Spin Sensitive Angular Variables}
 \label{sec:spin_sensitive_variables}
-To study spin correlations and entanglement in top quark pairs, a pair of spin-sensitive angular variables are used.
+To study spin correlations and entanglement in top quark pairs, a spin-sensitive angular variable is used. For the measurements of the bound-state effects, an additional angular variable is employed. Both variables are defined using the charged leptons from the dileptonic decay of the top quark pair.
 
 To define the variables, the momenta of the leptons are first boosted into their respective parent top quark rest frames $\hat \ell_{t}^+$ and $\hat \ell^-_t$. The inner product of these unit vectors then defines the variable
 \begin{equation}
     \label{eq:c_hel}
-    c_{\text{hel}} = \hat \ell_{t}^+ \cdot \hat \ell_{t}^-.
+    c_{\text{hel}} = \hat \ell_{t}^+ \cdot \hat \ell_{t}^-\,.
 \end{equation}
-Analagously, one can define the variable $c_{\text{han}}$, where either of the lepton momenta components parallel to the parent top quark momentum in the \ttbar rest frame is flipped before taking the inner product \cite{bernreuther_nlospin_2004,bernreuther_spin_observables}.
+Analogously, one can define the variable $c_{\text{han}}$, where either of the lepton momenta components parallel to the parent top quark momentum in the \ttbar rest frame is flipped before taking the inner product \cite{bernreuther_nlospin_2004,bernreuther_spin_observables}.
